@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "bookStore"
+  "defaultProject": "bookStore",
+  "cli": {
+    "analytics": false
+  }
 }

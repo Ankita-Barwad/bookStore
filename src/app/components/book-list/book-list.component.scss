@@ -1,0 +1,77 @@
+$kap-blue: #2a54bc;
+$kap-grey: #c8c8c8;
+$font-color: #415d78;
+
+header.kap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+header {
+  .button {
+    font-size: 14px;
+    border: none;
+    color: white;
+    background: #2a54bc;
+    padding: 10px 16px;
+    border-radius: 4px;
+  }
+  h1 {
+    margin-bottom: 3rem;margin-top: 0;
+  }
+}
+.kap-search {
+  input {
+    width: 47.7%;
+    border: none;
+    border-bottom: 1px solid $kap-grey;
+    background: transparent;
+    color: $kap-grey;
+    padding-left: 23px;
+    padding-bottom: 8px;
+  }
+  i {
+    color: #474747;
+    position: absolute;
+    left: 3px;
+    font-size: 13px;
+  }
+  input[type="text"]:focus {
+    outline: none;
+  }
+  div {
+    position: relative;
+  }
+}
+.kap-container {
+  color: $font-color;
+  h4 {
+    margin-bottom: 0;
+  }
+  h5 {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .kap-cards-list-items {
+    padding: 12px;
+    background: #fff;
+    float: left;
+    margin: 12px 19px 12px 0;
+    width: calc(50% - 33px);
+    box-shadow: 1px 1px 3px 0px #ababab;
+    border-radius: 4px;
+    border-left: 5px solid #fda747;
+    
+  }
+  .kap-cards-list {
+    height: 100vh;
+    padding: 0;
+    font-size: 12px;
+    margin-top: 18px;
+  }
+}
+li.kap-cards-list-items:nth-child(even) {
+  margin-right: 0!important;
+  padding-right: 0!important;
+}
