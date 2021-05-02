@@ -2,6 +2,9 @@ $kap-blue: #2a54bc;
 $kap-grey: #c8c8c8;
 $font-color: #415d78;
 
+input[type="text"]:focus {
+  outline: none;
+}
 header.kap__header {
   display: flex;
   justify-content: space-between;
@@ -40,9 +43,7 @@ header {
     left: 3px;
     font-size: 13px;
   }
-  input[type="text"]:focus {
-    outline: none;
-  }
+
   div {
     position: relative;
   }
@@ -103,10 +104,10 @@ form {
       background: transparent;
     }
   }
-  .close{
+  .close {
     position: absolute;
     right: 19px;
     top: 0;
-    cursor:pointer
+    cursor: pointer;
   }
 }
