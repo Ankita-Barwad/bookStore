@@ -1,18 +1,20 @@
 <header class="kap-header">
   <h1>Books</h1>
-  <button class="button">Create New Book</button>
+  <button class="button" (click)="createBook()">Create New Book</button>
 </header>
+<!-- <app-new-book-form *ngIf="showForm"></app-new-book-form> -->
+
 <section class="kap-search">
   <div>
     <i class="fa fa-search"></i>
-    <input type="text" placeholder="Search">
+    <input type="text" placeholder="Search" (keyup)="filterBooks($event.target.value)">
   </div>
 </section>
 <section class="kap-container">
   <h4>All Books</h4>
   <section class="kap-cards breadcrumb">
     <ul class="kap-cards-list breadcrumb__list">
-      <li class="kap-cards-list-items breadcrumb__item" *ngFor="let book of books">
+      <li class="kap-cards-list-items breadcrumb__item" *ngFor="let book of filteredBooks">
         <div class="card__body">
           <h5 class="card__subtitle">{{book.title}}</h5>
           <p class="card__copy">Authors: {{book.authors[0]}}</p>
