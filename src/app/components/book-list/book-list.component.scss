@@ -2,22 +2,26 @@ $kap-blue: #2a54bc;
 $kap-grey: #c8c8c8;
 $font-color: #415d78;
 
-header.kap-header {
+header.kap__header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
+button {
+  font-size: 14px;
+  border: none;
+  color: white;
+  background: $kap-blue;
+  padding: 10px 16px;
+  border-radius: 4px;
+}
+form button {
+  margin-top: 12px;
+}
 header {
-  .button {
-    font-size: 14px;
-    border: none;
-    color: white;
-    background: #2a54bc;
-    padding: 10px 16px;
-    border-radius: 4px;
-  }
   h1 {
-    margin-bottom: 3rem;margin-top: 0;
+    margin-bottom: 3rem;
+    margin-top: 0;
   }
 }
 .kap-search {
@@ -53,7 +57,7 @@ header {
     font-size: 12px;
     font-weight: 700;
   }
-  .kap-cards-list-items {
+  .kap__cards-list-items {
     padding: 12px;
     background: #fff;
     float: left;
@@ -62,16 +66,47 @@ header {
     box-shadow: 1px 1px 3px 0px #ababab;
     border-radius: 4px;
     border-left: 5px solid #fda747;
-    
   }
-  .kap-cards-list {
+  .kap__cards-list {
     height: 100vh;
     padding: 0;
     font-size: 12px;
     margin-top: 18px;
   }
 }
-li.kap-cards-list-items:nth-child(even) {
-  margin-right: 0!important;
-  padding-right: 0!important;
+li.kap__cards-list-items:nth-child(even) {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+form {
+  display: block;
+  position: absolute;
+  background: white;
+  color: $font-color;
+  width: 45%;
+  z-index: 1;
+  border: 1px solid $font-color;
+  right: 34px;
+  top: 70px;
+  border-radius: 4px;
+  padding: 18px;
+  label {
+    display: grid;
+    span {
+      display: inline-block;
+      padding: 8px 0;
+    }
+    input {
+      border: none;
+      border-bottom: 1px solid $kap-grey;
+      background: transparent;
+    }
+  }
+  .close{
+    position: absolute;
+    right: 19px;
+    top: 0;
+    cursor:pointer
+  }
 }
