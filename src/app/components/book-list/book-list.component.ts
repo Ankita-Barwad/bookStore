@@ -40,14 +40,26 @@ export class BookListComponent implements OnInit {
 
   }
   filterBooks(searchString: string) {
-    // this method filters the book according to the searched string
-    try {
-      this.filteredBooks = this.books;
-      this.filteredBooks = this.filteredBooks.filter((book: any) =>
-        book.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
-    } catch (error) {
-      console.log(error)
-    }
+    this.filteredBooks = this.books;
+    this.filteredBooks = this.filteredBooks.filter((book: any) => {
+      if (book.title.toLowerCase().includes(searchString.toLowerCase())) {
+        return book;
+      }
+      else if (book.authors['0'].toLowerCase().includes(searchString.toLowerCase())) {
+        return book;
+      }
+      else if (book.publisher) {
+        if (book.publisher.toLowerCase().includes(searchString.toLowerCase())) {
+          return book;
+        }
+      }
+      else{
+        console.log(this.filteredBooks)
+
+      }
+    })
+    console.log(this.filteredBooks)
+
   }
 
   ngOnInit(): void {
