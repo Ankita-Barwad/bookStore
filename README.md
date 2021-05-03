@@ -21,7 +21,6 @@ cd bookStore
 
 Install the npm packages described in the package.json and verify that it works:
 npm install
-npm start
 
 ## Development server
 
