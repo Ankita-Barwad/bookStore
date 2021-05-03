@@ -13,6 +13,10 @@ export class BookListComponent implements OnInit {
   showForm = false;
   filteredBooks: any;
 
+  constructor(private _booksService: BooksService) {
+  }
+
+  //formgroup to get form details
   newbooks = new FormGroup({
     title: new FormControl(''),
     author: new FormControl(''),
@@ -20,28 +24,35 @@ export class BookListComponent implements OnInit {
     publishedOn: new FormControl(''),
   });
 
+
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    this.books.push({
-      title: this.newbooks.value.title,
-      authors: [this.newbooks.value.author],
-      publisher: this.newbooks.value.publisher,
-      publishedDate: this.newbooks.value.publishedOn,
-    })
+    // method that runs on submission of form, pushes new book data to books array
+    try {
+      this.books.push({
+        title: this.newbooks.value.title,
+        authors: [this.newbooks.value.author],
+        publisher: this.newbooks.value.publisher,
+        publishedDate: this.newbooks.value.publishedOn,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+
   }
   filterBooks(searchString: string) {
-    this.filteredBooks = this.books;
-    this.filteredBooks = this.filteredBooks.filter((book: any) =>
-      book.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
-
-  }
-
-  constructor(private _booksService: BooksService) {
+    // this method filters the book according to the searched string
+    try {
+      this.filteredBooks = this.books;
+      this.filteredBooks = this.filteredBooks.filter((book: any) =>
+        book.title.toLowerCase().indexOf(searchString.toLowerCase()) !== -1)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   ngOnInit(): void {
     try {
-      // get books on load of component
+      // this method calls getBooks method on load of component, maps through the books and return an array of all volumeInfo objects. filteredBooks is the array which is binded on template for book list.
       this._booksService.getBooks().subscribe(results => {
         this.books = results.items.map((item: any) => item.volumeInfo);
         console.log(this.books);
@@ -50,19 +61,15 @@ export class BookListComponent implements OnInit {
     } catch (error) {
       console.log(error)
     }
-
   }
 
   showFormModal() {
-    // method to show form for creating new book 
-
+    // method to show/hide form for creating new book, showForm property controlls the same
     try {
       this.showForm = !this.showForm;
     } catch (error) {
       console.log(error)
     }
   }
-
-
 
 }

@@ -1,50 +1,65 @@
-<header class="kap__header">
-  <h1>Books</h1>
-  <button class="button" (click)="showFormModal()">Create New Book</button>
-</header>
-<!-- <app-new-book-form *ngIf="showForm"></app-new-book-form> -->
-<div *ngIf="showForm">
-  <form [formGroup]="newbooks" (ngSubmit)="onSubmit()">
-    <p class="close" (click)="showFormModal()">&times;</p>
-    <label>
-      <span>Title</span>
-      <input type="text" formControlName="title">
-    </label>
+<div class="book__container">
 
-    <label>
-      <span>Author</span>
-      <input type="text" formControlName="author">
-    </label>
-    <label>
-      <span>Publisher</span>
-      <input type="text" formControlName="publisher">
-    </label>
-    <label>
-      <span>Published Date</span>
-      <input type="text" formControlName="publishedOn">
-    </label>
-    <button type="submit" [disabled]="!newbooks.valid">Submit</button>
+  <!-- header starts here -->
+  <header class="kap__header">
+    <h1>Books</h1>
+    <button class="button" (click)="showFormModal()">Create New Book</button>
+  </header>
 
-  </form>
-</div>
-<section class="kap-search">
-  <div>
-    <i class="fa fa-search"></i>
-    <input type="text" placeholder="Search" (keyup)="filterBooks($event.target.value)">
+  <!-- header ends here -->
+
+  <!-- new book form starts here  -->
+  <div *ngIf="showForm">
+    <form [formGroup]="newbooks" (ngSubmit)="onSubmit()">
+      <p class="close" (click)="showFormModal()">&times;</p>
+      <label>
+        <span>Title</span>
+        <input type="text" formControlName="title">
+      </label>
+
+      <label>
+        <span>Author</span>
+        <input type="text" formControlName="author">
+      </label>
+      <label>
+        <span>Publisher</span>
+        <input type="text" formControlName="publisher">
+      </label>
+      <label>
+        <span>Published Date</span>
+        <input type="text" formControlName="publishedOn">
+      </label>
+      <button type="submit" [disabled]="!newbooks.valid">Submit</button>
+
+    </form>
   </div>
-</section>
-<section class="kap-container">
-  <h4>All Books</h4>
-  <section class="kap__cards breadcrumb">
-    <ul class="kap__cards-list breadcrumb__list">
-      <li class="kap__cards-list-items breadcrumb__item" *ngFor="let book of filteredBooks">
-        <div class="card__body">
-          <h5 class="card__subtitle">{{book.title}}</h5>
-          <p class="card__copy">Authors: {{book.authors[0]}}</p>
-          <p class="card__copy">Publisher: {{book.publisher}}</p>
-          <p class="card__copy">Published Date: {{book.publishedDate}}</p>
-        </div>
-      </li>
-    </ul>
+  <!-- new book form ends here  -->
+
+  <!-- search starts here -->
+  <section class="kap-search">
+    <div>
+      <i class="fa fa-search"></i>
+      <input type="text" placeholder="Search" (keyup)="filterBooks($event.target.value)">
+    </div>
   </section>
-</section>
+  <!-- search ends here -->
+
+  <!-- book list starts here -->
+  <section class="book__container">
+    <h4>All Books</h4>
+    <section class="kap__cards">
+      <ul class="kap__cards-list">
+        <li class="kap__cards-list-items" *ngFor="let book of filteredBooks">
+          <div class="card__body">
+            <h5 class="card__subtitle">{{book.title}}</h5>
+            <p class="card__copy">Authors: {{book.authors[0]}}</p>
+            <p class="card__copy">Publisher: {{book.publisher}}</p>
+            <p class="card__copy">Published Date: {{book.publishedDate}}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </section>
+  <!-- book list ends here -->
+
+</div>
