@@ -37,6 +37,9 @@ export class BookListComponent implements OnInit {
     } catch (error) {
       console.log(error)
     }
+    finally{
+      this.showForm = false;
+    }
 
   }
   filterBooks(searchString: string) {
